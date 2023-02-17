@@ -14,7 +14,7 @@ function generatePin(){
    document.getElementById("display-pin").value=pin;
 }
  
-/* second step  */
+//  =============================================
 document.getElementById("key-pad").addEventListener("click",function(event){
     const number = event.target.innerText;
     const calcInput= document.getElementById("typed-numbers");
@@ -22,6 +22,13 @@ document.getElementById("key-pad").addEventListener("click",function(event){
         if(number=="C"){
             calcInput.value="";
         }
+        else if(number=="<"){
+          const calcInputString= calcInput.value +'';
+           calcInputArrayLikeObject=calcInputString.split('');
+           calcInputArrayLikeObject.pop();
+          const calcInputRemaining =calcInputArrayLikeObject.join('');
+          calcInput.value=calcInputRemaining;
+       }
     }
    else{
     const previousNumber=calcInput.value;
@@ -29,8 +36,7 @@ document.getElementById("key-pad").addEventListener("click",function(event){
     calcInput.value=newNumber;
    }
 });
-
-/* third step */
+//  =============================================
  function verifyPin(){
   const pin = document.getElementById("display-pin").value;
   const typedNumbers= document.getElementById("typed-numbers").value;
